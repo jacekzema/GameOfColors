@@ -1,11 +1,35 @@
-<p>
-  playground works!
-</p>
+<div id="container">
+  <ng-container *ngFor="let box of boxes">
+    <div *ngIf="box.isDistabled == true || box.isClicked == true ; then isDis; else noDis">
 
-<ul>
-  <li *ngFor="let box of boxes" [style.color]="box.color">
-    {{box.name + ' ' + box.color + ' ' + box.isClicked}}
-  </li>
-</ul>
+    </div>
 
-<p>CO TO JEST</p>
+    <ng-template #noDis>
+      <div (click)="onClick(box)" [style.background-color]="box.color" >
+        {{box.name + box.isClicked}} <br>
+        {{box.isDistabled}}
+      </div>
+
+    </ng-template >
+
+
+    <ng-template #isDis>
+      <div [style.background-color]="box.color">
+        {{box.name + box.isClicked}} <br>
+        {{box.isDistabled}}
+      </div>
+
+    </ng-template>
+
+  </ng-container>
+
+</div>
+
+
+
+
+<!--[style.background-color]="box.color"-->
+<!--(click)="onClick(box)-->
+<!--{{box.name + box.isClicked}}-->
+<!--{{box.isDistabled}}-->
+<!--<div *ngIf=" box.isDistabled= false"; then "; else [style.opacity="'0.5'">-->

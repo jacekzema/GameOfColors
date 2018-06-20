@@ -1,0 +1,21 @@
+*
+{
+  text-align: center;
+}
+
+#container
+{
+  width: 400px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+
+  div {
+    box-sizing: border-box;
+    display: inline-block;
+    border: 1px black solid;
+    height: 100px;
+    width: 100px;
+
+  }
+}
