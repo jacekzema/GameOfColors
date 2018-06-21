@@ -1,3 +1,4 @@
+<h2>Ilość sprawdzeń: {{counterOfCheck}}</h2>
 <div id="container">
   <ng-container *ngFor="let box of boxes">
     <div *ngIf="box.isDistabled == true || box.isClicked == true ; then isDis; else noDis">
@@ -5,18 +6,18 @@
     </div>
 
     <ng-template #noDis>
-      <div (click)="onClick(box)" [style.background-color]="box.color" >
-        {{box.name + box.isClicked}} <br>
-        {{box.isDistabled}}
+      <div (click)="onClick(box)" (mouseover)="onHover(box)" [ngClass]="'startClass'" >
+        <!--{{box.name + box.isClicked}} <br>-->
+        <!--{{box.isDistabled}}-->
       </div>
 
     </ng-template >
 
 
     <ng-template #isDis>
-      <div [style.background-color]="box.color">
-        {{box.name + box.isClicked}} <br>
-        {{box.isDistabled}}
+      <div [style.background-color]="box.color" [style.opacity]="'1'">
+        <!--{{box.name + box.isClicked}} <br>-->
+        <!--{{box.isDistabled}}-->
       </div>
 
     </ng-template>

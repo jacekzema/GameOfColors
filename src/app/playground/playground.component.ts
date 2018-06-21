@@ -10,7 +10,7 @@ export class PlaygroundComponent implements OnInit {
 
   boxes: Array<Box> = [];
   varToHelp: number = 0;
-
+  counterOfCheck: number = 0;
   constructor() {
     console.log('Konstruktor Playgrounda');
     for(let i=0; i<16; i+=2)
@@ -27,12 +27,14 @@ export class PlaygroundComponent implements OnInit {
       let box:Box = ({
         name: 'Box' +i,
         color: randColor,
-        isClicked: false
+        isClicked: false,
+        isDistabled: false
       });
       let box1:Box = ({
         name: 'Box' +(i+1),
         color: randColor,
-        isClicked: false
+        isClicked: false,
+        isDistabled: false
       });
       this.boxes.push(box);
       this.boxes.push(box1);
@@ -65,25 +67,30 @@ export class PlaygroundComponent implements OnInit {
 
   onClick(box: Box){
     box.isClicked=true;
-    console.log(this.boxes);
     this.varToHelp++;
     console.log(this.varToHelp);
 
     if (this.varToHelp == 2)
     {
+      let pos, pos1=0;
       console.log('jestem w IF');
-      let boxesTemp = this.boxes;
-      let found = boxesTemp.findIndex( i=> i.isClicked === true);
-      console.log(found);
-      boxesTemp[found].isClicked = false;
-      let found1 = boxesTemp.findIndex( i=> i.isClicked === true);
-      console.log(found1);
+      pos = this.boxes.map( e=> { return e.isClicked; }).indexOf(true);
+      console.log(pos + 'Z MAPY');
+      pos1 = this.boxes.map( e=> { return e.isClicked; }).indexOf(true,pos+1);
+      console.log(pos1 + 'Z MAPY ALE 2');
+      // let boxesTemp = this.boxes;
+      // let found = boxesTemp.findIndex( i=> i.isClicked === true);
+      // console.log(found);
+      // boxesTemp[found].isClicked = false;
+      // let found1 = boxesTemp.findIndex( i=> i.isClicked === true);
+      // console.log(found1);
       this.varToHelp = 0;
-      this.checkChoise(this.boxes[found],this.boxes[found1]);
+      this.checkChoise(this.boxes[pos],this.boxes[pos1]);
     }
   }
 
   checkChoise(box: Box, box1:Box){
+    this.counterOfCheck ++;
 
     if(box.color == box1.color){
       box.isDistabled= true;
@@ -93,13 +100,16 @@ export class PlaygroundComponent implements OnInit {
     }
     else
     {
-      box.isClicked= false;
-      box1.isClicked= false;
+      setTimeout(() =>{
+        box.isClicked= false;
+        box1.isClicked= false;},
+        500);
+
     }
 
   }
 
-
-
+  onHover(box: Box){
+  }
 
 }

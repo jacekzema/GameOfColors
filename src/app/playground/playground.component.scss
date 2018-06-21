@@ -5,7 +5,7 @@
 
 #container
 {
-  width: 400px;
+  width: 416px;
   height: auto;
   margin-left: auto;
   margin-right: auto;
@@ -16,6 +16,19 @@
     border: 1px black solid;
     height: 100px;
     width: 100px;
-
+    opacity: 0.8;
+    margin: 0 2px;
   }
+  div:hover{
+    opacity: 1;
+    border: 2x solid black;
+  }
+}
+
+.onHover{
+
+}
+
+.startClass{
+background-color: #cccccc;
 }

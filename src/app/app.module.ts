@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { PlaygroundComponent } from './playground/playground.component';
+import {CheckService} from './services/check.service';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import { PlaygroundComponent } from './playground/playground.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [CheckService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
